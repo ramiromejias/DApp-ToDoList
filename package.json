@@ -14,7 +14,9 @@
   "author": "Ramiro Mejías Rodríguez <ramiro.mejias@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "bootstrap": "^5.3.2",
+    "bootstrap": "^5.3.2"
+  },
+  "devDependencies": {
     "lite-server": "^2.6.1"
   }
 }
