@@ -99,7 +99,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -112,7 +113,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -7636,9 +7638,74 @@
     "name": "solc",
     "version": "0.8.6+commit.11564f7e.Emscripten.clang"
   },
-  "networks": {},
+  "networks": {
+    "5777": {
+      "events": {
+        "0x6549102bed7d1bb5ec529ee14e2ca60ffc1f47f66d4cc6ca713220613cc64c25": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "id",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "string",
+              "name": "title",
+              "type": "string"
+            },
+            {
+              "indexed": false,
+              "internalType": "string",
+              "name": "description",
+              "type": "string"
+            },
+            {
+              "indexed": false,
+              "internalType": "bool",
+              "name": "done",
+              "type": "bool"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "createdAt",
+              "type": "uint256"
+            }
+          ],
+          "name": "TaskCreated",
+          "type": "event"
+        },
+        "0x3a359256e016dcfa8426ec503e08484999d6fcfb8c0f6084dc9e63374d838429": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "id",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "bool",
+              "name": "done",
+              "type": "bool"
+            }
+          ],
+          "name": "TaskToggledDone",
+          "type": "event"
+        }
+      },
+      "links": {},
+      "address": "0x3e8212aC330Fd851721F0466Fd1d39b5FdEF9a6a",
+      "transactionHash": "0x2c027eeb429aa7d4dc2951333322de365edfb1c3597e593ff506c0009179c934"
+    }
+  },
   "schemaVersion": "3.4.16",
-  "updatedAt": "2023-10-28T13:26:56.032Z",
+  "updatedAt": "2023-10-29T00:10:31.295Z",
+  "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",
     "methods": {},
