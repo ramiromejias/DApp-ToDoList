@@ -12,5 +12,9 @@
     "ToDo"
   ],
   "author": "Ramiro Mejías Rodríguez <ramiro.mejias@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap": "^5.3.2",
+    "lite-server": "^2.6.1"
+  }
 }
