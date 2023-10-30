@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blockchain ToDo</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="/libs/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./style.css" />
+    <!-- GOOGLE ICONS -->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- CONTAINER -->
+    <div class="container py-5">
+      <div class="row">
+        <!-- LEFT SIDE -->
+        <div class="col-md-4">
+          <!-- TITLE AND WALLET -->
+          <div class="card card-body bg-dark rounded-0 mb-4">
+            <h1 class="text-center">Blockchain ToDo</h1>
+            <h6 class="text-secondary text-center">
+              Aplicación descentralizada para tareas
+            </h6>
+            <div class="d-flex align-items-center">
+              <span class="material-icons"> account_balance_wallet </span>
+              <span class="ms-2">Billetera&nbsp;</span>
+              <a id="connect" class="text-secondary" href="#">[Conectar]</a>
+            </div>
+            <span id="account"></span>
+          </div>
+
+          <!-- TASK FORM -->
+          <form id="taskForm" class="card card-body bg-dark">
+            <h4>Escribe una Tarea</h4>
+            <input
+              type="text"
+              id="title"
+              class="form-control rounded-0 text-secondary my-4"
+              placeholder="Título"
+              autofocus
+            />
+            <textarea
+              id="description"
+              rows="3"
+              class="form-control rounded-0 text-secondary my-4"
+              placeholder="Descipción"
+            ></textarea>
+            <button class="btn btn-primary rounded-0">Guardar</button>
+          </form>
+        </div>
+        <!-- RIGHT SIDE -->
+        <div class="col-md-8">
+          <div id="tasksList"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="/libs/@truffle/contract/browser-dist/truffle-contract.min.js"></script>
+    <script src="./app.js"></script>
+    <script src="./ui.js"></script>
+  </body>
+</html>
