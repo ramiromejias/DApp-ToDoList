@@ -4,7 +4,8 @@
   "description": "This is a Decentralized Application (DApp) to keep track of tasks",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "lite-server",
+    "test": "truffle test"
   },
   "keywords": [
     "DApp",
@@ -14,6 +15,7 @@
   "author": "Ramiro Mejías Rodríguez <ramiro.mejias@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "@truffle/contract": "^4.6.31",
     "bootstrap": "^5.3.2"
   },
   "devDependencies": {
