@@ -6,7 +6,9 @@ This is a **Decentralized Application** (DApp) to keep track of tasks through th
 
 The proposed application is of the **ToDo List** style that will allow users to create tasks and complete them efficiently and securely through the Ethereum blockchain.
 
-There is **documentation** that explains in detail how the entire development should be carried out in the style of a didactic proposal.
+## Documentation
+
+There is **documentation** that explains in detail how the entire development should be carried out in the style of a didactic proposal. The documentation is located in the **docs directory** of this repository.
 
 ## Requirements
 
