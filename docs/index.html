@@ -1,0 +1,1340 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Creación de contrato inteligente e interacción a través de interfaz de usuario en tecnologías blockchain"
+    />
+    <meta
+      name="author"
+      content="Ramiro Mejías Rodríguez 'ramiro.mejias@gmail.com'"
+    />
+    <title>Blockchain ToDo List</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="col-lg-8 mx-auto p-4 py-md-5">
+      <header class="d-flex align-items-center pb-3 mb-5 border-bottom">
+        <span class="fs-3 text-center"
+          >Creación de contrato inteligente e interacción a través de interfaz
+          de usuario en tecnologías blockchain</span
+        >
+      </header>
+
+      <main>
+        <div class="row" style="margin-bottom: 20px">
+          <p class="fs-5 col-md-8">
+            El <b>objetivo</b> del presente material es brindar una experiencia
+            didáctica y práctica en el desarrollo de contratos inteligentes en
+            <b>Solidity</b>, así como su interacción a través de una interfaz de
+            usuario, utilizando tecnologías como
+            <b>NodeJS, Truffle, Ganache y Metamask</b>. La aplicación propuesta
+            es del estilo "ToDo List" que permitirá a los usuarios crear tareas
+            y darlas por completadas de manera eficiente y segura a través de la
+            cadena de bloques <b>Ethereum</b>.
+          </p>
+
+          <div class="col-md-4">
+            <img
+              src="./img/capture.png"
+              class="img-fluid"
+              alt="Capture"
+              style="margin-top: 10px"
+            />
+          </div>
+        </div>
+
+        <div class="mb-5">
+          <a
+            href="https://github.com/ramiromejias/DApp-ToDoList"
+            class="btn btn-primary btn-lg px-4"
+            target="_blank"
+            >GitHub</a
+          >
+        </div>
+
+        <hr class="col-3 col-md-2 mb-5" />
+
+        <a name="top"></a>
+        <div class="row g-5">
+          <div class="col-md-6">
+            <h2 class="text-body-emphasis">Antes de iniciar</h2>
+            <p>
+              Se realiza una explicación más detallada del proyecto a
+              desarrollar, se enuncian algunos conceptos clave y se dictan las
+              pauta para preparar el entorno de desarrollo.
+            </p>
+            <ul class="list-unstyled ps-0">
+              <li>
+                <a class="icon-link mb-1" href="#concepts">
+                  Conceptos básicos
+                </a>
+              </li>
+              <li>
+                <a class="icon-link mb-1" href="#guidelines">
+                  Orientaciones generales
+                </a>
+              </li>
+              <li>
+                <a class="icon-link mb-1" href="#talking">
+                  Hablemos del proyecto
+                </a>
+              </li>
+              <li>
+                <a class="icon-link mb-1" href="#documentation">
+                  Documentación útil
+                </a>
+              </li>
+              <li>
+                <a class="icon-link mb-1" href="#enviroment">
+                  Preparando el entorno
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="col-md-6">
+            <h2 class="text-body-emphasis">Paso a paso</h2>
+            <p>
+              Se muestra una guía que permite ir avanzando paso a paso en el
+              desarrollo del proyecto.
+            </p>
+            <ul class="list-unstyled ps-0">
+              <li>
+                <a class="icon-link mb-1" href="#step1">
+                  1. Creación del proyecto</a
+                >
+              </li>
+              <li>
+                <a class="icon-link mb-1" href="#step2">
+                  2. Creación del contrato inteligente</a
+                >
+              </li>
+              <li>
+                <a class="icon-link mb-1" href="#step3">
+                  3. Preparando el despliegue del contrato inteligente</a
+                >
+              </li>
+              <li>
+                <a class="icon-link mb-1" href="#step4">
+                  4. Configuración de Truffle</a
+                >
+              </li>
+              <li>
+                <a class="icon-link mb-1" href="#step5">
+                  5. Compilación y Despliegue del contrato inteligente</a
+                >
+              </li>
+              <li>
+                <a class="icon-link mb-1" href="#step6">
+                  6. Interactuando con el contrato inteligente desde consola</a
+                >
+              </li>
+              <li>
+                <a class="icon-link mb-1" href="#step7">
+                  7. Realizando pruebas al contrato inteligente</a
+                >
+              </li>
+              <li>
+                <a class="icon-link mb-1" href="#step8">
+                  8. Creación de la interfaz de usuario</a
+                >
+              </li>
+              <li>
+                <a class="icon-link mb-1" href="#step9">
+                  9. Interactuando con la DApp</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="col-md-12">
+            <a name="concepts"></a>
+            <h3 class="text-body-emphasis">
+              Conceptos básicos <a href="#top">&#9650;</a>
+            </h3>
+            <p>
+              Conocer estos conceptos, te permitirá avanzar en el desarrollo de
+              este proyecto, comprendiendo a profundidad cada paso de los que se
+              proponen.
+            </p>
+            <p>
+              <b>Blockchain:</b> es una especie de base de datos pública que se
+              actualiza y se comparte en una serie de ordenadores conectados en
+              red.
+            </p>
+
+            <p>
+              <b>Contrato inteligente:</b> también se conoce como Smart
+              Contract, es un código que reside en la blockchain y se ejecuta
+              exactamente como ha sido programado. Una vez que estos se
+              implementan en la red, ya no pueden modificarse.
+            </p>
+
+            <p>
+              <b>Aplicación descentralizada:</b> también es conocida como
+              (DApp), por sus siglas en inglés, y no es más que una aplicación
+              diseñada en una red descentralizada puntu a punto, que combina un
+              contrato inteligente y una interfaz de usuario frontal.
+            </p>
+
+            <p>
+              <b>Ethereum:</b> es una cadena de bloques con un ordenador
+              integrado en ella. Es la base para construir aplicaciones y
+              organizaciones de una manera descentralizada, sin permisos,
+              resistente a la censura.
+            </p>
+
+            <p>
+              <b>Ether:</b> ETH es la criptomoneda nativa de Ethereum. El
+              propósito de ETH es posibilitar la existencia de un mercado de
+              computación. Un mercado de este tipo proporciona un incentivo
+              económico a los participantes que verifican y ejecutan las
+              solicitudes de transacciones y proporcionan recursos informáticos
+              a la red.
+            </p>
+
+            <p>
+              <b>Máquina Virtual de Ethereum:</b> también conocida como EVM, es
+              un ordenador único y convencional, cuyo estado han acordado todos
+              los participantes de la red.
+            </p>
+            <p>
+              <b>Compilar:</b> consiste en traducir el código fuente del
+              contrato inteligente, a un formato que la máquina virtual de la
+              blockchain pueda entender y ejecutar. Durante este proceso, se
+              verifican errores y se genera el código objeto que se puede
+              ejecutar en la blockchain.
+            </p>
+            <p>
+              <b>Desplegar:</b> implica tomar el código compilado del contrato
+              inteligente y cargarlo en la blockchain para que se convierta en
+              una entidad autónoma y funcional en la red, creando una instancia
+              única de ese contrato en la blockchain, que tiene su propia
+              dirección y estado.
+            </p>
+          </div>
+
+          <div class="col-md-12">
+            <a name="guidelines"></a>
+            <h3 class="text-body-emphasis">
+              Orientaciones generales <a href="#top">&#9650;</a>
+            </h3>
+            <p>
+              Para llevar a feliz término el presentente proyecto y facilitar tu
+              aprendizaje, te propongo una serie de sugerencias a seguir:
+            </p>
+            <ol>
+              <li>
+                Realiza una <b>lectura general de todo el documento</b> antes de
+                comenzar a descargar las herramientas, preparar el entorno o
+                escribir código. Esto te dará una visión general del proyecto y
+                te sentirás más seguro a la hora de comenzar con el desarrollo.
+              </li>
+              <li>
+                El copiar y pegar no está mal, de hecho, permite avanzar con
+                mayor rapidez; pero <b>debes entender el código</b>. Por tal
+                motivo, todo el código de este proyecto se encuentra comentado,
+                una buena práctica a seguir a la hora de programar. La
+                sugerencia es que leas los comentarios, entiendas cada una de
+                las funcionalidades y no te permitas avanzar dejando lagunas de
+                conocimiento.
+              </li>
+              <li>
+                <b>Realiza las actividades que se proponen al final</b> y tómalo
+                como un reto personal. Si has comprendido todo el desarrollo del
+                proyecto, te has detenido a analizas cada funcionalidad,
+                instrucción y línea de código, no te será para nada complicado
+                salir victorioso.
+              </li>
+              <li>
+                No creas todo lo que te estoy enseñando en este manterial,
+                <b
+                  >consulta la
+                  <a href="#documentation">Documentación útil</a></b
+                >
+                porque esta será capaz de ampliar tus conocimientos sobre las
+                tecnologías utilizadas.
+              </li>
+              <li>
+                Si quieres ser un buen estudiante, es necesario que te
+                conviertas en un buen profesor; por tanto, si te ha resultado
+                útil lo aprendido aquí, no dudes en
+                <b>compartirlo con otros</b> que desean aprender sobre la
+                materia tratada.
+              </li>
+            </ol>
+          </div>
+
+          <div class="col-md-12">
+            <a name="talking"></a>
+            <h3 class="text-body-emphasis">
+              Hablemos del proyecto <a href="#top">&#9650;</a>
+            </h3>
+            <p>
+              Desarrollar este proyecto te brindará una experiencia didáctica y
+              práctica en el desarrollo de contratos inteligentes utilizando
+              Solidity como lenguaje de programación, interactuarás con el
+              contrato inteligente creado por medio de una interfaz de usuario,
+              en la que reafirmarás algunos conocimientos sobre HTML, CSS y
+              JavaScript.
+            </p>
+            <p>
+              La aplicación descentralizada que estás a punto de crear, tendrá
+              un estilo "ToDo List" que permitirá a los usuarios crear y dar por
+              completadas las tareas de manera eficiente y segura en la cadena
+              de bloques Ethereum.
+            </p>
+            <p>Si de tecnologías se trata, utilizarás:</p>
+            <ul>
+              <li>
+                <a href="#nodejs"><b>NodeJS</b></a
+                >, como entorno de tiempo de ejecución de JavaScript basado en
+                el motor V8 de Google Chrome, para ejecutar código JavaScript en
+                el lado del servidor.
+              </li>
+              <li>
+                <a href="#npm"><b>NPM</b></a
+                >, un administrador de paquetes para el entorno de tiempo de
+                ejecución NodeJS que te permitirá instalar, compartir,
+                actualizar y gestionar bibliotecas y paquetes de código
+                reutilizable.
+              </li>
+              <li>
+                <a href="#vsc"><b>Visual Studio Code</b></a
+                >, será el editor de códigos que nos permitirá el desarrollo web
+                y JavaScript, con la instalación de algunas extensiones.
+              </li>
+              <li>
+                <a href="#solidity"><b>Solidity</b></a
+                >, como lenguaje de programación para desarrollar el contrato
+                inteligente que gestionarán las operaciones de la DApp en la
+                blockchain.
+              </li>
+              <li>
+                <a href="#truffle"><b>Truffle</b></a
+                >, será el framework de desarrollo que facilitará la creación,
+                compilación y migración del contrato inteligente creado; así
+                como la realización de pruebas unitarias.
+              </li>
+              <li>
+                <a href="#ganache"><b>Ganache</b></a
+                >, es un entorno de desarrollo personal que te permitirá simular
+                una red blockchain local. La utilizaremos para desplegar y
+                probar el contrato inteligente de la aplicación en un entorno
+                controlado.
+              </li>
+              <li>
+                <a href="#metamask"><b>Metamask</b></a
+                >, es una extensión de navegador web que permite a los usuarios
+                interactuar con aplicaciones descentralizadas a través de una
+                interfaz amigable. La integraremos a la aplicación creada para
+                que los usuarios puedan interactuar con la blockchain utilizando
+                sus billeteras Ethereum.
+              </li>
+              <li>
+                <a href="#lite-server&bootstrap"><b>Lite-server</b></a
+                >, es un servidor de desarrollo web ligero diseñado para
+                facilitar el desarrollo y la prueba de aplicaciones web locales.
+              </li>
+              <li>
+                <a href="#lite-server&bootstrap"><b>Bootstrap</b></a
+                >, como marco de diseño de código abierto, la utilizaremos para
+                la creación de la interfaz de usuario adaptable, de manera más
+                rápida y eficiente.
+              </li>
+            </ul>
+          </div>
+
+          <div class="col-md-12">
+            <a name="documentation"></a>
+            <h3 class="text-body-emphasis">
+              Documentación útil <a href="#top">&#9650;</a>
+            </h3>
+            <p>
+              La siguiente bibliografía, corresponde a la documentación oficial
+              de cada una de las tecnologías utilizadas para el desarrollo del
+              presente proyecto:
+            </p>
+            <ul>
+              <li>
+                <b>Ethereum:</b>
+                <a
+                  href="https://ethereum.org/en/developers/docs"
+                  target="_blank"
+                  >https://ethereum.org/en/developers/docs</a
+                >
+              </li>
+              <li>
+                <b>NodeJS:</b>
+                <a href="https://nodejs.org/en/docs" target="_blank"
+                  >https://nodejs.org/en/docs</a
+                >
+              </li>
+              <li>
+                <b>NPM:</b>
+                <a href="https://docs.npmjs.com" target="_blank"
+                  >https://docs.npmjs.com</a
+                >
+              </li>
+              <li>
+                <b>Visual STudio Code:</b>
+                <a href="https://code.visualstudio.com/docs" target="_blank"
+                  >https://code.visualstudio.com/docs</a
+                >
+              </li>
+              <li>
+                <b>Solidity:</b>
+                <a
+                  href="https://docs.soliditylang.org/en/v0.8.22"
+                  target="_blank"
+                  >https://docs.soliditylang.org/en/v0.8.22</a
+                >
+              </li>
+              <li>
+                <b>Truffle:</b>
+                <a href="https://trufflesuite.com/docs/truffle" target="_blank"
+                  >https://trufflesuite.com/docs/truffle</a
+                >
+              </li>
+              <li>
+                <b>Ganache:</b>
+                <a href="https://trufflesuite.com/docs/ganache" target="_blank"
+                  >https://trufflesuite.com/docs/ganache</a
+                >
+              </li>
+              <li>
+                <b>MetaMask:</b>
+                <a href="https://docs.metamask.io" target="_blank"
+                  >https://docs.metamask.io</a
+                >
+              </li>
+              <li>
+                <b>lite-server:</b>
+                <a
+                  href="https://github.com/johnpapa/lite-server"
+                  target="_blank"
+                  >https://github.com/johnpapa/lite-server</a
+                >
+              </li>
+              <li>
+                <b>Bootstrap:</b>
+                <a
+                  href="https://getbootstrap.com/docs/4.1/getting-started/introduction"
+                  target="_blank"
+                  >https://getbootstrap.com/docs/4.1/getting-started/introduction</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="col-md-12">
+            <a name="enviroment"></a>
+            <h3 class="text-body-emphasis">
+              Preparando el entorno <a href="#top">&#9650;</a>
+            </h3>
+            <p>
+              Para desarrollar el proyecto, es necesario instalar una serie de
+              aplicaciones. A continuación, se describen los pasos a seguir para
+              ello.
+            </p>
+            <a name="nodejs"></a>
+            <h4>NodeJS</h4>
+            <p>
+              Es necesario acceder al sitio
+              <a href="https://nodejs.org/en/download" target="_blank"
+                >https://nodejs.org/en/download</a
+              >, descargar el instalador de acuerdo a la plataforma a utilizar e
+              instalar el software siguiendo los pasos correspondientes.
+            </p>
+            <img
+              src="./img/node_download.png"
+              class="img-fluid"
+              alt="NodeJS Download"
+            />
+            <a name="npm"></a>
+            <p>
+              Al instalar NodeJS, también se instalará su gestor de paquetes
+              NPM.
+            </p>
+            <p>
+              Para la realización del presente proyecto, se utilizó la versión
+              18.16.1 de NodeJS.
+            </p>
+            <a name="vsc"></a>
+            <h4>Visual Studio Code</h4>
+            <p>
+              El instalador del que será nuestro editor de código, se encuentra
+              en la dirección
+              <a href="https://code.visualstudio.com/download" target="_blank"
+                >https://code.visualstudio.com/download</a
+              >
+              en la que, de acuerdo a la plataforma, se debe descargar e
+              instalar el software.
+            </p>
+            <img
+              src="./img/vsc_download.png"
+              class="img-fluid"
+              alt="Visual Studio Code Download"
+            />
+            <a name="solidity"></a>
+            <p>
+              Una vez instalado, desde el propio entorno del editor de código,
+              se recomienda instalar la extensión llamada <b>Solidity</b>, que
+              permite que Visual Studio Code reconozca y autocomplete la sitaxis
+              de este lenguaje de programación para contratos inteligentes.
+            </p>
+            <a name="truffle"></a>
+            <h4>Truffle</h4>
+            <p>
+              Para instalar Truffle, basta con abrir una consola, escribir el
+              comando <b>npm install truffle -g</b> y presionar la tecla Enter.
+            </p>
+            <a name="ganache"></a>
+            <h4>Ganache</h4>
+            <p>
+              Descargar e instalar desde el sitio
+              <a
+                href="https://github.com/trufflesuite/ganache-ui/releases"
+                target="_blank"
+                >https://github.com/trufflesuite/ganache-ui/releases</a
+              >
+              de acuerdo a la plataforma en la que se trabaje.
+            </p>
+            <img
+              src="./img/ganache_download.png"
+              class="img-fluid"
+              alt="Ganache Download"
+            />
+            <p>
+              Una vez instalado, abrir Ganache y crear un nuevo espacio de
+              trabajo a través del botón <b>NEW WORKSPACE</b>, colocar un nombre
+              y presionar el botón <b>SAVE WORKSPACE</b>.
+            </p>
+            <img
+              src="./img/ganache_workspace.png"
+              class="img-fluid"
+              alt="Ganache New Workspace"
+            />
+            <p>
+              Una vez creado, se debe acceder a dicho espacio de trabajo en el
+              que se mostrarán, entre otros aspectos, las 12 palabras que
+              aparecen con el título MNEMONIC. Estas deben ser copiadas pues
+              serán útiles para la realización del siguiente paso.
+            </p>
+            <img
+              src="./img/ganache_mnemonic.png"
+              class="img-fluid"
+              alt="Ganache Mnemonic"
+            />
+            <a name="metamask"></a>
+            <h4>Metamask</h4>
+            <p>
+              Metamask se instala como una extensión del navegador web; esto es
+              posible, accediendo al enlace
+              <a href="https://metamask.io/download/" target="_blank"
+                >https://metamask.io/download/</a
+              >, seleccionado el navegador en uso y añadiendo la extesión al
+              mismo.
+            </p>
+            <img
+              src="./img/metamask_browsers.png"
+              class="img-fluid"
+              alt="Metamask Browsers"
+            />
+            <p>
+              Una vez instalada la extensión de Metamask, se abrirá una nueva
+              pestaña del navegador en la que, luego de aceptar los Términos de
+              uso, se debe presionar el botón
+              <b>Importar una cartera existente</b>
+            </p>
+            <img
+              src="./img/metamask_addwallet.png"
+              class="img-fluid"
+              alt="Metamask Add Wallet"
+              width="50%"
+            />
+            <p>
+              En un nueva ventana se preguntará sobre la disposición de mejorar
+              Metamask, a lo que es posible Aceptar o No.
+            </p>
+            <img
+              src="./img/metamask_collaborate.png"
+              class="img-fluid"
+              alt="Metamask Collaborate"
+              width="50%"
+            />
+            <p>
+              Se le solicitará introducir las 12 palabras que brindó Ganache en
+              el paso anterior. Una vez introducidas, presionar el botón
+              <b>Confirmar frase secreta de recuperación</b>.
+            </p>
+            <img
+              src="./img/metamask_secretwords.png"
+              class="img-fluid"
+              alt="Metamask Collaborate"
+              width="50%"
+            />
+            <p>
+              Se solicitará entonces una contraseña de acceso a Metamask, esta
+              debe poseer un mínimo de 8 caracteres. Se debe, además, marcar la
+              opción de haber entendido que no es posible que Metamask le ayude
+              a recuperar la contraseña si esta es olvidada. Una vez hecho esto,
+              presionar el botón <b>Importar mi cartera</b>.
+            </p>
+            <img
+              src="./img/metamask_password.png"
+              class="img-fluid"
+              alt="Metamask Collaborate"
+              width="50%"
+            />
+            <p>
+              Se le mostrará un mensaje de éxito y debe presionar los botones
+              <b>Entendido, Siguiente y Hecho</b>.
+            </p>
+            <img
+              src="./img/metamask_three.png"
+              class="img-fluid"
+              alt="Metamask Three Steps"
+            />
+            <p>
+              Ahora. es necesario agregar la red de prueba que ha creado
+              Ganache; para ello, desde la ventana de Metamask, en la esquina
+              superior izquierda, presione sobre Ethereum Mainnet y seleccione
+              <b>Agregar red</b>
+            </p>
+            <img
+              src="./img/metamask_addnetwork.png"
+              class="img-fluid"
+              alt="Metamask Add Network"
+            />
+            <p>
+              Como la red que se desea agregar no se encuentra en la lista,
+              seleccione la opción de <b>Agregar una red manualmente</b>.
+            </p>
+            <img
+              src="./img/metamask_networkslist.png"
+              class="img-fluid"
+              alt="Metamask Networks List"
+            />
+            <p>
+              Estos son los datos que obligatoriamente debe introducir para
+              agregar la red local de Ganache:
+            </p>
+            <p>
+              <b>Nombre de la red:</b> Ganache<br />
+              <b>Nueva dirección URL de RPC:</b> HTTP://127.0.0.1:7545<br />
+              <b>Identificador de cadena:</b> 1337<br />
+              <b>Símbolo de moneda:</b> ETH
+            </p>
+            <img
+              src="./img/metamask_addingganache.png"
+              class="img-fluid"
+              alt="Metamask Adding Ganache"
+            />
+            <p>
+              Una vez introducir estos datos, debe presionar el botón
+              <b>Guardar</b> y si todo ha ido bien, se mostrará un mensaje de
+              éxito solicitándole si desea cambiar a la red recién añadida.
+            </p>
+            <img
+              src="./img/metamask_changetoganache.png"
+              class="img-fluid"
+              alt="Metamask Change To Ganache"
+            />
+            <p>
+              Al realizarse el cambio de red, se mostrará el balance de 1000 ETH
+              en su billetera.
+            </p>
+            <img
+              src="./img/metamask_balance.png"
+              class="img-fluid"
+              alt="Metamask Balance"
+            />
+          </div>
+
+          <div class="col-md-12">
+            <a name="step1"></a>
+            <h3 class="text-body-emphasis">
+              Paso 1 - Creación del proyecto <a href="#top">&#9650;</a>
+            </h3>
+            <p>
+              Para comenzar con la creación del proyecto, lo primero sería que
+              te dirigieras a algún directorio de tu dispositivo y crearas una
+              carpeta denominada <b>DApp-ToDoList</b> u otro nombre similar.
+            </p>
+            <p>
+              Haciendo clic derecho encima de la carpeta recién creada,
+              aparecerá la opción de <b>Abrir con Code / Open with Code</b>.
+              Esto, abrirá el Visual Studio Code en dicho directorio.
+            </p>
+            <p>
+              Desde el propio editor, es posible tener disponible una subventana
+              de la consola de comandos; esto se logra accediendo al
+              <b>menú Terminal</b> del Visual STudio Code y seleccionando la
+              <b>opción Nuevo terminal</b>.
+            </p>
+            <p>
+              Corresponde ahora inicializar nuestro proyecto utilizando para
+              ello el gestor de paquetes de NodeJS, denominado NPM; para ello,
+              desde la consola utiliza e comando <b>npm init -y</b> y presiona
+              la tecla Enter.
+            </p>
+            <p>
+              Esto creará un archivo denominado package.json cuyo contenido es
+              el siguiente:
+            </p>
+            <img src="./img/package.png" class="img-fluid" alt="package.json" />
+            <p>
+              Puedes escribir una breve descripción en la parte de
+              <b>description</b>, así como algunas palabras clave separadas por
+              coma en el acápite <b>keywords</b>.
+            </p>
+            <p>
+              Inicialicemos ahora truffle en nuestro proyecto utilizando el
+              comando <b>truffle init</b> y presionando la tecla Enter.
+            </p>
+            <p>
+              Este comando creará tres directorios:
+              <b>contracts, migrations y test</b>; así como el archivo
+              <b>truffle-config.js</b>
+            </p>
+          </div>
+
+          <div class="col-md-12">
+            <a name="step2"></a>
+            <h3 class="text-body-emphasis">
+              Paso 2 - Creación del contrato inteligente
+              <a href="#top">&#9650;</a>
+            </h3>
+            <p>
+              Para crear el contrato inteligente que utilizaremos para este
+              proyecto, usemos el comando
+              <b>truffle create contract TasksContract</b>
+            </p>
+            <p>
+              Si nos dirigimos a la <b>carpeta contracts</b> de nuestro
+              proyecto, encontraremos un nuevo archivo denominado
+              <b>TasksContract.sol</b> con elementos necesarios para comenzar a
+              escribir nuestro contrato inteligente.
+            </p>
+            <img
+              src="./img/taskscontract_start.png"
+              class="img-fluid"
+              alt="TasksContract.sol"
+            />
+            <p>
+              La <b>Línea 1</b>, se refiere a una directiva especial utilizada
+              en código fuente del lenguaje Solidity que se utiliza para indicar
+              el <b>tipo de licencia</b> bajo la cual se distribuye el código
+              del contrato inteligente. En este caso, se está utilizando la
+              Licencia MIT que no es más que una licencia de código abierto muy
+              popular que permite a las personas utilizar, modificar y
+              distribuir el código con bastante libertad, siempre y cuando se
+              incluya el aviso de derechos de autor y la declaración de la
+              licencia.
+            </p>
+            <p>
+              En la <b>Línea 2</b>, se especifica la
+              <b>versión del compilador de Solidity</b> que se debe utilizar
+              para compilar el contrato; en este caso, una versión mayor o igual
+              a la 0.4.22 y menor a la 0.9.0.
+            </p>
+            <p>
+              A continuación se muestra todo el código de nuestro contrato
+              inteligente con sus respectivos comentarios.
+            </p>
+            <p>
+              Además de copiar y pegar, es importante que leas para qué se
+              utiliza cada una de las instrucciones en Solidity empleadas.
+            </p>
+            <img
+              src="./img/taskscontract_complete.png"
+              class="img-fluid"
+              alt="TasksContract.sol"
+            />
+          </div>
+
+          <div class="col-md-12">
+            <a name="step3"></a>
+            <h3 class="text-body-emphasis">
+              Paso 3 - Preparando el despliegue del contrato inteligente
+              <a href="#top">&#9650;</a>
+            </h3>
+            <p>
+              Para ir preparando el camino para el despliegue de nuestro
+              contrator inteligente TasksContract.sol, es necesario crear un
+              <b>nuevo archivo dentro del directorio migrations</b>; a este
+              archivo le llamaremos <b>1_Migration_TasksContract.js</b>
+            </p>
+            <p>
+              El contenido de este archivo, así como la explicación de cada una
+              de las instrucciones utilizadas, se describen a continuación:
+            </p>
+            <img
+              src="./img/traskscontract_migration.png"
+              class="img-fluid"
+              alt="1_Migration_TasksContract.js"
+            />
+          </div>
+
+          <div class="col-md-12">
+            <a name="step4"></a>
+            <h3 class="text-body-emphasis">
+              Paso 4 - Configuración de Truffle
+              <a href="#top">&#9650;</a>
+            </h3>
+            <p>
+              Para configurar Truffle, utilizaremos el archivo
+              <b>truffle-config.js</b>
+              que se encuentra en la raíz de nuestro proyecto; lo utilizaremos
+              para configurar las redes en las que se desplegará el contrato
+              inteligente creado, así como la versión del compilador.
+            </p>
+            <p>
+              Dentro del <b>acápite networks</b>, configuremos la red de pruebas
+              para el despliegue de nuestro contrato inteligente, descomentando
+              y configurando las siguientes lineas:
+            </p>
+            <img
+              src="./img/truffleconfig_network.png"
+              class="img-fluid"
+              alt="Truffle Config - Network"
+            />
+            <p>
+              Como <b>host</b> se establece el 127.0.0.1 que es el host local
+              que estamos utilizando en la red de pruebas de Ganache; como
+              <b>port</b>, el 7545 y en el <b>network_id</b> se puede establecer
+              el * para utilizar cualquier red.
+            </p>
+            <p>
+              También es necesario dirigirse al acápite de <b>compilers</b> y
+              establecer la versión a la 0.8.6
+            </p>
+          </div>
+
+          <div class="col-md-12">
+            <a name="step5"></a>
+            <h3 class="text-body-emphasis">
+              Paso 5 - Compilación y despliegue del contrato inteligente
+              <a href="#top">&#9650;</a>
+            </h3>
+            <p>
+              Para desplegar nuestro contrato inteligente en la red de pruebas
+              de Ganache, ejecutemos en la consola el comando
+              <b>truffle compile</b>
+            </p>
+            <img
+              src="./img/truffle_compile.png"
+              class="img-fluid"
+              alt="truffle compile"
+            />
+            <p>
+              Como resultado, puedes notar que se creó el
+              <b>directorio contracts</b>, dentro del
+              <b>directorio build</b> con un nuevo archivo denominado
+              <b>TasksContract.json</b>
+            </p>
+            <p>
+              Cada vez que ejecutemos el <b>comando truffle compile</b>, se
+              compilarán todos aquellos contratos inteligentes que posean algún
+              cambio desde la última vez que fueron compilados y siempre,
+              partiendo desde su archivo de migración correspondiente.
+            </p>
+            <p>
+              Realicemos ahora un <b>despligue de nuestro contrato</b> en la red
+              local de Ganache, nuestra blockchain local; para ello, ejecutemos
+              en la terminal el comando <b>truffle deploy</b>
+            </p>
+            <img
+              src="./img/truffle_deploy.png"
+              class="img-fluid"
+              alt="truffle deploy"
+            />
+            <p>
+              Es válida aclarar que el despligue parte desde una compilación y
+              sí produce cambios en el estado de la blockchain que incurre en un
+              gasto. Esto se puede observar si se visualiza la interfaz de
+              Ganache, donde ha ocurrido una modificación del balance de la
+              primera cuenta.
+            </p>
+            <img
+              src="./img/ganache_balance.png"
+              class="img-fluid"
+              alt="Ganache balance"
+            />
+          </div>
+
+          <div class="col-md-12">
+            <a name="step6"></a>
+            <h3 class="text-body-emphasis">
+              Paso 6 - Interactuando con el contrato inteligente desde consola
+              <a href="#top">&#9650;</a>
+            </h3>
+            <p>
+              Truffle nos permite interactuar con nuestro contrato inteligente
+              previamente desplegando en la red blockchain, por medio de la
+              consola; para ello, utilizaremos el comando <b>truffle console</b>
+            </p>
+            <p>
+              <b>PRIMERO</b>, almacenemos el despliegue de nuestro contrato
+              inteligente en una valiable para poder interactuar con él.
+              Utilicemos la siguiente instrucción en la consola de Truffle:
+              <b>contract = await TasksContract.deployed()</b>
+            </p>
+            <p>
+              <b>SEGUNDO</b>, preguntemos por la dirección de nuestro contrato
+              inteligente, a través de la instrucción
+              <b>contract.address</b>
+            </p>
+            <p>
+              <b>TERCERO</b>, accedamos a la primera tarea que se crea por
+              defecto por medio del constructor al desplegar nuestro contrato
+              inteligente. Para ello, utilicemos la instrucción
+              <b>contract.tasks(1)</b>
+            </p>
+            <p>
+              <b>CUARTO</b>, creemos una tarea utilizando el método público
+              createTask() de nuestro contrato, por medio de la instrucción
+              <b
+                >contract.createTask('Tarea de prueba', 'Esta es una tarea de
+                prueba')</b
+              >
+            </p>
+            <p>
+              <b>QUINTO</b>, visualicemos esa tarea de prueba recién creada
+              utilizando la intrucción <b>contract.tasks(2)</b>
+            </p>
+            <p>
+              <b>SEXTO</b>, cambiemos la tarea 2 a realizada; para ello,
+              utilicemos la instrucción <b>contract.toggleDone(2)</b>
+            </p>
+            <p>
+              <b>SÉPTIMO</b>, para comprobar que el cambio se realizó
+              correctamente, utilicemos la instrucción <b>contract.tasks(2)</b>
+            </p>
+          </div>
+
+          <div class="col-md-12">
+            <a name="step7"></a>
+            <h3 class="text-body-emphasis">
+              Paso 7 - Realizando pruebas al contrato inteligente
+              <a href="#top">&#9650;</a>
+            </h3>
+            <p>
+              El conocimiento anterior, nos permitirá implementar un conjunto de
+              pruebas unitarias a nuestro contrato inteligente utilizando
+              Truffle.
+            </p>
+            <p>
+              Realizar pruebas antes de realizar el despliegue definitivo de
+              contratos inteligentes en una blockchain real, es de suma
+              importancia por dos aspectos fundamentales: uno, porque cuesta
+              dinero el despliegue y dos, porque una vez desplegado el contrato,
+              no es posible modificarlos.
+            </p>
+            <p>
+              Para la realización de algunas pruebas unitarias a nuestro
+              contrato inteligente, creemos un nuevo archivo dentro del
+              <b>directorio test</b> y a este archivo le llamaremos
+              <b>Test_TasksContract.js</b>
+            </p>
+            <p>
+              A continuación, el contenido del archivo de pruebas creado con
+              cada una de las explicaciones necesarias para entender sus
+              instrucciones:
+            </p>
+            <img
+              src="./img/contract_test.png"
+              class="img-fluid"
+              alt="Contract test"
+            />
+            <p>
+              Una vez creado el archivo con todo su contenido, estamos en
+              condiciones de ejecutar las pruebas; para ello, utilizaremos en
+              consola el comando <b>truffle test</b>
+            </p>
+            <p>Si todo ha ido bien, este debería ser el resultado:</p>
+            <img
+              src="./img/contract_test_result.png"
+              class="img-fluid"
+              alt="Contract test"
+            />
+            <p>
+              Después de compilar el contrato inteligente, comprueba que la
+              migración se haya realizado correctamente, obtiene el listado de
+              tareas, crea una nueva tarea y, por último, establece como
+              finalizada esa tarea.
+            </p>
+          </div>
+
+          <div class="col-md-12">
+            <a name="step8"></a>
+            <h3 class="text-body-emphasis">
+              Paso 8 - Creación de la interfaz de usuario
+              <a href="#top">&#9650;</a>
+            </h3>
+            <h4>Directorio y archivos</h4>
+            <p>
+              Para comenzar con la creación de la interfaz de usuario que
+              interactuará con nuestro contrato inteligente, es necesario crear
+              un <b>nuevo directorio</b> en la raíz de nuestro proyecto
+              denominada
+              <b>client</b>
+            </p>
+            <p>
+              Nuestra interfaz de usuario será construida utilizando
+              <b>html, css y javascript</b>; por lo tanto, crearemos dentro del
+              <b>directorio client</b>, 4 archivos:
+            </p>
+            <ul>
+              <li>
+                <b>index.html</b> contendrá toda la estructura de la interfaz de
+                usuario en código html.
+              </li>
+              <li>
+                <b>style.css</b> donde se establecerán los estilos de la
+                interfaz de usuario.
+              </li>
+              <li>
+                <b>ui.js</b> contendrá funcionalidades sobre la interacción con
+                la interfaz de usuario.
+              </li>
+              <li>
+                <b>app.js</b> constituye el archivo principal para escribir el
+                código de la interfaz de usuario.
+              </li>
+            </ul>
+            <a name="lite-server&bootstrap"></a>
+            <h4>Instalación y configuración de módulos</h4>
+            <p>
+              Con el objetivo de agilizar el proceso de creación de la interfaz
+              de usuario para interactuar con nuestro contrato inteligente, es
+              necesario instalar dos módulos. Instalaremos además un módulo
+              adicional para poder interactuar con nuestro contrato inteligente:
+            </p>
+            <ul>
+              <li>
+                <b>lite-server</b> como servidor ligero que permitirá visualizar
+                y probar los cambios que se realicen en la interfaz.
+              </li>
+              <li>
+                <b>bootstrap</b> que mejora la visualidad de la interfaz y su
+                adaptabilidad.
+              </li>
+              <li>
+                <b>@truffle/contract</b> permite interactuar con el contrato
+                inteligente desde la interfaz de usuario.
+              </li>
+            </ul>
+            <p>
+              Para instalar estos tres módulos, desde la consola, utilicemos el
+              comando <b>npm install lite-server -D</b> primero, y luego,
+              <b>npm install bootstrap @truffle/contract</b>
+            </p>
+            <p>
+              En el caso de <b>lite-server</b>, le estamos indicando que solo lo
+              utilizaremos para <b>fines de desarrollo</b>; ello justifica la
+              inclusión del <b>parámetro -D</b> al final.
+            </p>
+            <p>
+              La instalación de estos módulos, habrá modificado nuestro archivo
+              <b>package.json</b>, quedando de la siguiente forma en los
+              acápites de dependencias y dependencias de desarrollo:
+            </p>
+            <img
+              src="./img/package_dependencies.png"
+              class="img-fluid"
+              alt="package.json dependencies"
+            />
+            <p>
+              Esta instalación habrá creado un <b>nuevo directorio</b> en la
+              raíz de nuestro proyecto denominado <b>node_modules</b> que
+              contiene una serie de directorios, necesario para la ejecución de
+              nuestro proyecto.
+            </p>
+            <p>
+              Para el caso específico de <b>lite-server</b>, es necesario
+              especificar algunas configuraciones sencillas; para ello,
+              crearemos un archivo denominado <b>bs-config.json</b> en la raíz
+              de nuestro proyecto.
+            </p>
+            <p>El contenido de este archivo sería el siguiente:</p>
+            <img
+              src="./img/liteserver_config.png"
+              class="img-fluid"
+              alt="lite-server configuration file"
+            />
+            <p>
+              En la configuración, le estamos especificando al lite-server, que
+              sirva los directorios <b>/client y /buil/contracts</b>; además,
+              estamos estableciendo que tenga acceso al directorio
+              <b>/node_modules</b>
+              por medio de a ruta <b>/libs</b>. Esto ultimo, con el objetivo de
+              poder utilizar, desde el html, los archivos de bootstrap. También
+              le estamos especificando que funcione utilizando el
+              <b>puerto 3000</b>.
+            </p>
+            <h4>Configuraciones adicionales en el package.json</h4>
+            <p>
+              Realicemos algunas configuraciones adicionales en nuestro archivo
+              <b>package.json</b> en el <b>acápite scripts</b>, el que debería
+              quedar como sigue:
+            </p>
+            <img
+              src="./img/package_scripts.png"
+              class="img-fluid"
+              alt="package.json scripts"
+            />
+            <p>
+              Con la realización de estos cambios, a partir de ahora podemos
+              <b>ejecutar las pruebas</b> a nuestro contrato inteligente en
+              consola, ejecutando el comando <b>npm run test</b> y para
+              <b>visualizar nuestra interfaz de usuario</b>, utilizaremos el
+              comando
+              <b>npm run dev</b>
+            </p>
+            <p>
+              Ejecutemos en consola el comando <b>npm run dev</b>, el que debe
+              abrir en nuestro navegador la URL <b>http://localhost:3000/</b> y
+              visualizar en tiempo real los cambios que realicemos a nuestra
+              interfaz de usuario.
+            </p>
+            <h4>Estructura y estilo de la interfaz de usuario</h4>
+            <p>
+              Creemos ahora la
+              <b>estructura de nuestra interfaz de usuario</b> utilizando
+              <b>html</b>. Para ello, escribiremos en el archivo
+              <b>index.html</b>, ubicado dentro del <b>directorio client</b>, el
+              que quedaría con el siguiente contenido:
+            </p>
+            <img
+              src="./img/index.html.png"
+              class="img-fluid"
+              alt="index.html"
+            />
+            <p>
+              También establezcamos <b>algunos estilos generales</b> que
+              incluiremos en el <b>archivo style.css</b>, ubicado dentro del
+              <b>directorio client</b>. Podrás notar que son muy pocos porque
+              hemos delegado en Bootstrap la mayoría de ellos.
+            </p>
+            <p>
+              Así quedaría el contenido de nuestro <b>archivo style.css</b>:
+            </p>
+            <img src="./img/style.css.png" class="img-fluid" alt="style.css" />
+            <h4>Creando la lógica de interacción con la blockchain</h4>
+            <p>
+              Una vez que tenemos la estructura y estilo de la interfaz de
+              usuario, corresponde
+              <b
+                >crear la lógica de interacción con el contrato inteligente en
+                la blockchain</b
+              >. Utilizaremos para ello el archivo <b>app.js</b> ubicado dentro
+              del <b>directorio client</b>.
+            </p>
+            <p>
+              El contenido del archivo <b>app.js</b> quedaría de la siguiente
+              forma:
+            </p>
+            <img src="./img/app.js.png" class="img-fluid" alt="app.js" />
+            <h4>Funciones para la interacción con la interfaz de usuario</h4>
+            <p>
+              Es el momento de
+              <b
+                >crear las funciones que nos permitan interactuar con la
+                interfaz de usuario</b
+              >; para ello, utilizaremos el <b>archivo ui.js</b> ubicado dentro
+              del <b>directorio client</b>.
+            </p>
+            <p>Este sería el contenido del archivo:</p>
+            <img src="./img/ui.js.png" class="img-fluid" alt="ui.js" />
+          </div>
+
+          <div class="col-md-12">
+            <a name="step9"></a>
+            <h3 class="text-body-emphasis">
+              Paso 9 - Interactuando con la DApp
+              <a href="#top">&#9650;</a>
+            </h3>
+            <p>
+              Ya esmos en condiciones de
+              <b>interactuar con la DApp creada</b> por medio de su interfaz de
+              usuario, la cual debe lucir de la siguiente forma:
+            </p>
+            <img
+              src="./img/ui_start.png"
+              class="img-fluid"
+              alt="UI start"
+              width="40%"
+            />
+            <p>
+              Si nuestra <b>MetaMask</b> está
+              <b>conectada a la blockchain local de Ganache</b> y nos hemos
+              <b>autenticado</b> en ella, al presionar en <b>Conectar</b>, se
+              abrirá la ventana de la billetera solicitando la cuenta con la que
+              deseamos conectarnos a nuestra DApp que, por lo general, es la
+              primera; así que podemos presionar el <b>botón Siguiente</b>.
+            </p>
+            <img
+              src="./img/metamask_connection.png"
+              class="img-fluid"
+              alt="MetaMask Account"
+              width="40%"
+            />
+            <p>
+              Se nos mostrará entonces una <b>nueva ventana de MetaMask</b> que
+              es de suma importancia en el mundo de las DApps, y es precisamnete
+              cuando visualizamos los
+              <b>permisos que está requiriendo nuestra aplicación</b>; en este
+              caso, está solicitando ver las direcciones de nuestras cuentas, a
+              lo cual podemos responder que sí, presionando el
+              <b>botón Conectar</b>.
+            </p>
+            <img
+              src="./img/metamask_permissions.png"
+              class="img-fluid"
+              alt="MetaMask Permissions"
+              width="40%"
+            />
+            <p>
+              A partir de ahora, la DApp quedará <b>conectada</b> a la primera
+              cuenta de nuestra billetera MetaMask. Ello es evidente porque
+              ahora se muestra la <b>dirección de nuestra billetera</b> en la
+              interfaz de usuario.
+            </p>
+            <img
+              src="./img/ui_connected.png"
+              class="img-fluid"
+              alt="UI Connected"
+              width="40%"
+            />
+            <p>
+              <b>Añadamos ahora una tarea</b>; para ello, escribamos un título,
+              una descripción y presionemos el <b>botón Guardar</b>. Esta acción
+              nos abrirá nuestra billetera MetaMask para mostrarnos los
+              <b>datos correspondientes a esta transacción</b> que debemos
+              aprobar presionando el <b>botón Confirmar</b>.
+            </p>
+            <img
+              src="./img/metamask_approvecreate.png"
+              class="img-fluid"
+              alt="MetaMask Approve Creation"
+              width="40%"
+            />
+            <p>
+              <b>¡Aparecen dos tareas creadas!</b> Claro, la primera la creamos
+              por medio del <b>constructor</b> de nuestro contrato inteligente,
+              ¿recuerdas?; pero esto <b>solo ocurre por única vez</b>. La
+              segunda, sí es la tarea cuyos datos introdujiste en el formulario
+              de la interfaz de usuario.
+            </p>
+            <img
+              src="./img/ui_taskscreated.png"
+              class="img-fluid"
+              alt="UI Tasks Created"
+            />
+            <p>
+              La <b>segunda interacción</b> que podemos probar es
+              <b>dar por finalizada la tarea recién creada</b>; para ello,
+              acciona el interruptor de la misma e inmediatmente se abrirá una
+              ventana de MetaMask para aprobar la transacción.
+            </p>
+            <p>
+              A partir de ahora,
+              <b
+                >la tarea aparecerá como aprobada en nuestra interfaz de
+                usuario</b
+              >
+              pero, lo más importante, es que ha quedado guardada como una
+              transacción inmutable en la blockchain.
+            </p>
+            <img
+              src="./img/ui_taskdone.png"
+              class="img-fluid"
+              alt="Task Done"
+            />
+            <p>
+              Por último, probemos
+              <b>desvincular nuestra billetera MetaMask de la DApp</b>; para
+              ello, vayamos a nuestra billetera MetaMask y presionemos el icono
+              de la esquina superir derecha, semejante a un
+              <b>globo del mundo</b>.
+            </p>
+            <img
+              src="./img/metamask_disconnect.png"
+              class="img-fluid"
+              alt="MetaMask Disconnect"
+              width="40%"
+            />
+            <p>
+              Se mostrará nuestra cuenta conectada a la DApp. Para concluir el
+              proceso de desconexión, accede a los <b>tres puntos</b> al lado de
+              la misma y presiona la <b>opción Desconectar esta cuenta</b>.
+            </p>
+            <img
+              src="./img/metamask_confirmdisconnect.png"
+              class="img-fluid"
+              alt="MetaMask Confirm Disconnect"
+              width="40%"
+            />
+            <p>
+              A partir de ahora, nuestra cuenta ha sido desconectada de la DApp
+              y la interfaz de usuario lucirá como en el estado inicial. Si
+              pruebas conectarte nuevamente, podrás ver todas las tareas que
+              hayas creado con sus respectivos estados de realizadas o no.
+            </p>
+          </div>
+
+          <div class="col-md-12">
+            <a name="concepts"></a>
+            <h3 class="text-body-emphasis">
+              Y para finalizar <a href="#top">&#9650;</a>
+            </h3>
+            <p>
+              Ha sido un verdadero placer poder guiar tu aprendizaje utilizando
+              este proyecto como pretexto.
+            </p>
+            <p>
+              Si has seguido las instrucciones al pie de la letra y has puesto
+              en práctica las recomendaciones iniciales, te reto a resolver las
+              siguientes actividades que llevarán tu conocimiento y habilidades
+              al próximo nivel.
+            </p>
+            <p><b>¡Éxitos en tu vida profesional!</b></p>
+            <h4>Actividades propuestas</h4>
+            <ol>
+              <li>
+                Piensa en la forma en que implementarías las funcionalidades de
+                editar una tarea y también de eliminarla.
+              </li>
+              <li>
+                Atrévete a implementar estas funcionalidades de editar y
+                eliminar tareas. No olvides comentar el código que vas
+                escribiendo para que otros entiendan tu lógica de hacer las
+                cosas.
+              </li>
+              <li>
+                Hazme saber sobre tus avances o bloqueos durante el proceso;
+                siempre estoy a la distancia de un mensaje:
+                <a href="mailto:ramiro.mejias@gmail.com"
+                  >ramiro.mejias@gmail.com</a
+                >
+              </li>
+            </ol>
+          </div>
+        </div>
+      </main>
+
+      <footer class="pt-5 my-5 text-body-secondary border-top">
+        Creado por
+        <a href="mailto:ramiro.mejias@gmail.com">Ramiro Mejías Rodríguez</a>
+        &middot; 2023
+      </footer>
+    </div>
+    <script src="js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

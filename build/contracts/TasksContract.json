@@ -7699,12 +7699,12 @@
         }
       },
       "links": {},
-      "address": "0x3e8212aC330Fd851721F0466Fd1d39b5FdEF9a6a",
-      "transactionHash": "0x2c027eeb429aa7d4dc2951333322de365edfb1c3597e593ff506c0009179c934"
+      "address": "0xcc7C6Ca04d59370236F1CE65854A801b23E48B60",
+      "transactionHash": "0x14e1f7101d43fc19ad5cba1a9d9c4a4abc5db803b2b18a4308d8081910b38d29"
     }
   },
   "schemaVersion": "3.4.16",
-  "updatedAt": "2023-10-29T00:10:31.295Z",
+  "updatedAt": "2023-11-01T00:08:33.232Z",
   "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",
